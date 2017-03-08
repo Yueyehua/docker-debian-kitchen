@@ -43,8 +43,8 @@ RUN \
   apt-get -qq install -y docker-engine && \
   apt-get -qq install -y puppet puppet-lint && \
   gem install -q --no-rdoc --no-ri --no-format-executable --no-user-install \
-    chef-dk foodcritic && \
-  pip3 install ansible ansible-lint;
+    chef-dk foodcritic rubocop && \
+  pip3 install ansible ansible-lint pylint;
 
 # Install other tools for test purpose
 RUN \
@@ -57,13 +57,7 @@ RUN \
 # Install gems
 RUN \
   gem install -q --no-rdoc --no-ri --no-format-executable --no-user-install \
-    berkshelf \
-    bundler \
-    busser \
-    busser-serverspec \
-    rubocop \
-    serverspec \
-    webmock;
+    berkshelf bundler busser busser-serverspec serverspec webmock;
 
 # Install test-kitchen
 RUN \
