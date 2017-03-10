@@ -43,7 +43,7 @@ RUN \
   apt-get -qq install -y docker-engine && \
   apt-get -qq install -y puppet puppet-lint && \
   gem install -q --no-rdoc --no-ri --no-format-executable --no-user-install \
-    chef-dk foodcritic rubocop && \
+    chef-dk foodcritic rubocop yaml-lint travis && \
   pip3 install ansible ansible-lint pylint;
 
 # Install other tools for test purpose
