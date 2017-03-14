@@ -34,13 +34,16 @@ RUN \
 RUN \
   apt-get -qq install -y python3 python3-pip;
 
-# Install docker, chef, puppet and ansible with lint tools
+# Install docker, vagrant, chef, puppet and ansible with lint tools
 RUN \
   curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add - && \
   add-apt-repository \
     "deb https://apt.dockerproject.org/repo/ debian-jessie main" && \
+  add-apt-repository \
+    "deb http://httpredir.debian.org/debian/ jessie main contrib" && \
   apt-get -qq update && \
   apt-get -qq install -y docker-engine && \
+  apt-get -qq install -y virtualbox vagrant && \
   apt-get -qq install -y puppet puppet-lint && \
   gem install -q --no-rdoc --no-ri --no-format-executable --no-user-install \
     chef-dk foodcritic rubocop yaml-lint travis && \
