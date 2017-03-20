@@ -6,6 +6,11 @@ test-kitchen.
 Puppet, Chef and Ansible are also installed in order to work with kitchen
 for test purpose.
 
+Prerequisites
+-------------
+
+- Docker
+
 Usage
 -----
 
