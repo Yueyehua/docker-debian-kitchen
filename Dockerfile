@@ -2,16 +2,17 @@ FROM debian:jessie
 MAINTAINER Richard Delaplace "rdelaplace@yueyehua.net"
 LABEL version="1.0.1"
 
-# Apt update and install dependencies
+# Apt update and upgrade
 RUN \
   apt-get -qq update && \
-  apt-get -qq dist-upgrade -y && \
-  apt-get -qq install -y iproute sudo less vim nano tree curl git && \
-  apt-get -qq install -y autoconf bison build-essential libssl-dev \
-    libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev \
-    libgdbm3 libgdbm-dev && \
-  apt-get -qq install -y apt-transport-https ca-certificates \
-    software-properties-common;
+  apt-get -qq dist-upgrade -y;
+
+# Install dependencies
+RUN \
+  apt-get -qq install -y iproute sudo less vim nano tree curl git autoconf \
+    bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev \
+    libncurses5-dev libffi-dev libgdbm3 libgdbm-dev apt-transport-https \
+    ca-certificates software-properties-common;
 
 # Install Ruby 2.4.0
 ENV _RUBY=ruby-2.4.0 _RUBY_VERS=2.4
