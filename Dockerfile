@@ -34,17 +34,23 @@ RUN \
 RUN \
   apt-get -qq install -y python3 python3-pip;
 
-# Install docker, vagrant, chef, puppet and ansible with lint tools
+# Add Apt repositories
 RUN \
-  curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add - && \
+  curl -fsSL https://apt.dockerproject.org/gpg | apt-key add - && \
   add-apt-repository \
     "deb https://apt.dockerproject.org/repo/ debian-jessie main" && \
+  curl -fsSL https://www.virtualbox.org/download/oracle_vbox_2016.asc | \
+    apt-key add - && \
+  curl -fsSL https://www.virtualbox.org/download/oracle_vbox.asc | \
+    apt-key add - && \
   add-apt-repository \
-    "deb http://httpredir.debian.org/debian/ jessie main contrib" && \
-  apt-get -qq update && \
-  apt-get -qq install -y docker-engine && \
-  apt-get -qq install -y virtualbox vagrant && \
-  apt-get -qq install -y puppet puppet-lint && \
+    'deb http://download.virtualbox.org/virtualbox/debian jessie contrib' && \
+  apt-get -qq update;
+
+# Install docker, vagrant, chef, puppet and ansible with lint tools
+RUN \
+  apt-get -qq install -y docker-engine virtualbox-5.1 vagrant \
+    puppet puppet-lint && \
   gem install -q --no-rdoc --no-ri --no-format-executable --no-user-install \
     chef-dk foodcritic rubocop yaml-lint travis && \
   pip3 install ansible ansible-lint pylint;
