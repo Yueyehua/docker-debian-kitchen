@@ -68,7 +68,8 @@ RUN \
     test-kitchen \
     kitchen-puppet \
     kitchen-ansible \
-    kitchen-docker_cli;
+    kitchen-docker_cli \
+    kitchen-vagrant;
 
 # Mask failing services
 RUN \
