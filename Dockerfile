@@ -20,6 +20,7 @@ RUN \
 # Install test-kitchen
 RUN \
   gem install -q --no-rdoc --no-ri --no-format-executable --no-user-install \
+    bundler \
     test-kitchen \
     kitchen-puppet \
     kitchen-ansible \
