@@ -23,6 +23,7 @@ RUN \
     test-kitchen \
     kitchen-puppet \
     kitchen-ansible \
+    kitchen-docker \
     kitchen-docker_cli;
 
 # Mask failing services
